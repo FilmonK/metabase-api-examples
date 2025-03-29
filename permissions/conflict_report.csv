@@ -1,0 +1,5 @@
+user,db_id,perm_type,values,sources
+"ab@cd.com",2,view-data,"none, unrestricted","none: [All Users]) | unrestricted: [Administrators])"
+"ab@cd.com",3,view-data,"none, unrestricted","none: [All Users]) | unrestricted: [Administrators])"
+"filmon@cd.com",2,view-data,"none, unrestricted","none: [All Users, Dev]) | unrestricted: [Marketing])"
+"filmon@cd.com",3,view-data,"none, unrestricted","none: [All Users]) | unrestricted: [Dev, Marketing])"
