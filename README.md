@@ -14,7 +14,7 @@ https://www.metabase.com/learn/metabase-basics/administration/administration-and
 - Javascript
 - NodeJS
 
-### 🔍 [Logging](./logging/)
+## [Logging](./logging/)
 
 Track sync operations and debug API interactions.
 > **File:** `logging/syncs.js`
@@ -24,7 +24,7 @@ Track sync operations and debug API interactions.
 
 
 
-### 🔐 [Permissions](./permissions/)
+## [Permissions](./permissions/)
 
 Handle conflicting data access permissions
 > **File:** `permissions/conflicts.js`
