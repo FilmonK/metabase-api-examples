@@ -53,15 +53,20 @@ const main = async () => {
           if (!perms) {
             const key = `${dbId}::view-data`;
             if (!dbPermMap[key]) dbPermMap[key] = { values: new Set(), sources: {} };
-            dbPermMap[key].values.add("none");
-            dbPermMap[key].sources["none"] = (dbPermMap[key].sources["none"] || []).concat(groupNames[groupId]);
+            dbPermMap[key].values.add("blocked");
+            dbPermMap[key].sources["blocked"] = (dbPermMap[key].sources["blocked"] || []).concat(groupNames[groupId]);
             continue;
           }
 
           for (const [permType, value] of Object.entries(perms)) {
             const key = `${dbId}::${permType}`;
             if (!dbPermMap[key]) dbPermMap[key] = { values: new Set(), sources: {} };
-            const normalized = typeof value === "object" ? JSON.stringify(value) : value;
+            let normalized;
+            if (typeof value === "object") {
+              normalized = "granular";
+            } else {
+              normalized = value;
+            }
             dbPermMap[key].values.add(normalized);
             dbPermMap[key].sources[normalized] = (dbPermMap[key].sources[normalized] || []).concat(groupNames[groupId]);
           }
@@ -85,15 +90,14 @@ const main = async () => {
       });
     }
 
-    
     conflicts.forEach((c) => {
       console.log(`\n Conflict for ${c.user} on DB ${c.db_id}, ${c.perm_type}`);
       console.log(`  Values: ${c.values}`);
-      console.log(`  Sources: ${c.sources}`);
+      console.log(`  Data permissions: ${c.sources}`);
     });
 
     // Export to CSV
-    const csv = ["user,db_id,perm_type,values,sources"];
+    const csv = ["user,db_id,perm_type,values,data_permissions"];
     for (const row of conflicts) {
       csv.push(`"${row.user}",${row.db_id},${row.perm_type},"${row.values}","${row.sources}"`);
     }
