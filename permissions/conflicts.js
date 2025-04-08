@@ -102,7 +102,7 @@ const main = async () => {
       csv.push(`"${row.user}",${row.db_id},${row.perm_type},"${row.values}","${row.sources}"`);
     }
     fs.writeFileSync("conflict_report.csv", csv.join("\n"));
-    console.log("\n✅ CSV exported to conflict_report.csv");
+    console.log("\n CSV exported to conflict_report.csv");
   } catch (error) {
     console.error("\u274C Error:", error);
   }
