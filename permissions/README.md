@@ -1,10 +1,8 @@
-
-# 🔐 Metabase API – Permissions Use Cases
+# Metabase API – Permissions Use Cases
+Metabase's permissions model is powerful and can get complex fast, especially when a user belongs to multiple groups with different settings. For a deeper dive into how Metabase handles permissions across groups, collections, and databases, check out the official documentation:  
+👉 [Understanding Permissions in Metabase](https://www.metabase.com/docs/latest/permissions/start)
 
 This example demonstrates how to use the Metabase API to identify and resolve **conflicting data access permissions** between groups, databases, and collections.
-
-Metabase's permissions model is powerful but can get complex fast—especially when a user belongs to multiple groups with different settings
-This script helps you visualize and debug those conflicts programmatically.
 
 ---
 
